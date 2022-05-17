@@ -1,0 +1,25 @@
+{% extends 'generator/base.html' %}
+
+{% block content %}
+  <div class="row justify-content-center mt-4">
+    <div class="col-4">
+      <div class="card">
+        <div class="card-body">
+          {% if generated_password %}
+          <div class="alert alert-primary text-center" role="alert">
+            {{ generated_password }}
+          </div>
+          {% endif %}
+          
+          <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="d-grid gap-2">
+              <button class="btn btn-primary" type="submit">Generate Password</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
